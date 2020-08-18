@@ -1,17 +1,34 @@
 <!-- tweego -w -o index.html Media Main Days -->
-::StoryData 
+:: StoryData
 {
-  "start": "PassageName",
-  "zoom": 1,
-  "format": "SugarCube",
-  "format-version": "2.33.1"
+        "ifid": "0BCCD0D4-4E39-45CD-AEC3-8DEB86A45603",
+        "format": "SugarCube",
+        "format-version": "2.33.1",
+        "start": "PassageName",
+        "zoom": 1
 }
 
-::StoryTitle 
+:: StoryTitle 
 My new story
 
-::StoryInit
+:: StoryInit
 /* Used for pre-story-start initialization tasks, like variable initialization (happens at the beginning of story initialization). */
+<<silently>>
 
 
-::StoryMenu
+
+
+<</silently>>
+
+
+
+:: PassageName
+Hello World
+
+<<timed 2s>>
+<<set _model = setup.shopinv.get("Eagle-Talon TSi-1993")>>
+
+<</timed>>
+
+
+:: StoryMenu

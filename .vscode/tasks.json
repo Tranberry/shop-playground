@@ -6,7 +6,7 @@
     {
       "label": "Tweego - Build once",
       "type": "shell",
-      "command": "tweego -o index.html script style twee",
+      "command": "tweego -o index.html script style twee media",
       "problemMatcher": [],
       "group": {
         "kind": "build",
