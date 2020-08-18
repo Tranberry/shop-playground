@@ -1,0 +1,17 @@
+<!-- tweego -w -o index.html Media Main Days -->
+::StoryData 
+{
+  "start": "PassageName",
+  "zoom": 1,
+  "format": "SugarCube",
+  "format-version": "2.33.1"
+}
+
+::StoryTitle 
+My new story
+
+::StoryInit
+/* Used for pre-story-start initialization tasks, like variable initialization (happens at the beginning of story initialization). */
+
+
+::StoryMenu
