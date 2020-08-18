@@ -1,4 +1,4 @@
-// Akjosch 's solution:
+// Akjosch 's https://github.com/Akjosch solution:
 setup.shopinv = new Map();
 setup.ShopInv = class ShopInv {
     constructor(name, price, stack) {
