@@ -1,59 +1,53 @@
 // Akjosch 's https://github.com/Akjosch solution:
-setup.shopinv = new Map();
-setup.ShopInv = class ShopInv {
-    constructor(name, price, stack) {
-        this.id = name + "-" + price + "-" + stack;
-        this.name = name;
-        this.price = price;
-        this.stack = stack;
-        setup.shopinv.set(this.id, this);
+var shopinv = new Map();
+
+class ShopInv {
+    constructor(id, data) {
+        Object.assign(this, data);
+        this.id = id;
+        shopinv.set(this.id, this);
+   }
+
+   create(details) {
+       return new Item(this, details);
+   }
+
+   static byId(id) {
+       return shopinv.get(id);
    }
 };
-/* add prices to the "DB" */
-new ShopInv('Bagel', 2, true);
+
+/* add base objects to the "DB" */
+new ShopInv("bagel", {name: 'Bagel', price: 2, stack: true});
+
 /* and name a class to use them */
-setup.ShIn = class ShIn {
-    constructor(base, details) {
+class Item {
+    constructor(baseData, details) {
         Object.assign(this, details);
-        this.baseId = base.id;
+        if(baseData instanceof ShopInv) {
+            this.base = baseData;
+            this.baseId = baseData.id
+        } else {
+            this.base = ShopInv.byId(baseData);
+            this.baseId = this.base.id;
+        }
     }
-    get base() { return setup.shopinv.get(this.baseId); }
     get name() { return this.base.name; }
     get price() { return this.base.price; }
     get stack() { return this.base.stack; }
-    /* add clone() and toJSON() implementations here */ 
+    
+    clone() {
+        return this.base.create(this);
+    }
+
+    toJSON() {
+        var data = Object.assign({}, this);
+        delete data.base;
+        delete data.baseId;
+        return JSON.reviveWrapper("new setup.Item(" + JSON.stringify(this.baseId) + ",$ReviveData$)", data);
+    }
 };
 
-/* ###################################################### */
-
-// setup.cars = new Map();
-// setup.CarModel = class CarModel {
-//     constructor(make, model, year) {
-//         this.id = make + "-" + model + "-" + year;
-//         this.make = make;
-//         this.model = model;
-//         this.year = year;
-//         setup.cars.set(this.id, this);
-//    }
-// };
-// /* add models to the "DB" */
-// new CarModel('Eagle', 'Talon TSi', 1993);
-// /* and make a class to use them */
-// setup.Car = class Car {
-//     constructor(base, details) {
-//         Object.assign(this, details);
-//         this.baseId = base.id;
-//     }
-//     get base() { return setup.cars.get(this.baseId); }
-//     get make() { return this.base.make; }
-//     get model() { return this.base.model; }
-//     get year() { return this.base.year; }
-//     /* add clone() and toJSON() implementations here */ 
-// };
-
-
-// And now if you have some car model in _model already, you can create your own instance:
-// <<set $car = new setup.Car(_model, { color: "red", mileage: 123819 })>>
-// [16:58]
-// If you don't have a model ...
-// <<set _model = setup.cars.get("Eagle-Talon TSi-1993")>>
+/* make the classes available globally for usage and toJSON */
+setup.ShopInv = ShopInv;
+setup.Item = Item;

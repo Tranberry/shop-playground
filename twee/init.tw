@@ -26,7 +26,7 @@ My new story
 Hello World
 
 <<timed 2s>>
-<<set _model = setup.shopinv.get("Eagle-Talon TSi-1993")>>
+<<set $bagel = setup.ShopInv.byId("bagel").create({eaten: 0.5})>>
 
 <</timed>>
 
