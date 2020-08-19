@@ -20,6 +20,8 @@ class ShopInv {
 /* add base objects to the "DB" */
 new ShopInv("bagel", {name: 'Bagel', price: 2, stack: true});
 
+new ShopInv("hotdog", {name: 'Hot Dog', price: 5, stack: false});
+
 /* and name a class to use them */
 class Item {
     constructor(baseData, details) {
