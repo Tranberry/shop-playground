@@ -107,7 +107,6 @@ body {
 
 .item-img {
   margin: .5em 0;
-  background-image: url("../../media/interface/heart2.png");
   background-size: cover;
   border-radius: 3px;
 }

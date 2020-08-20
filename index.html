@@ -270,7 +270,6 @@ body {
 
 .item-img {
   margin: .5em 0;
-  background-image: url("../../media/interface/heart2.png");
   background-size: cover;
   border-radius: 3px;
 }
@@ -1009,23 +1008,32 @@ after
 &lt;&lt;print Object.keys($inventory)&gt;&gt; | &lt;span class=&quot;info&quot;&gt;keys&lt;/span&gt; &lt;br&gt;
 &lt;&lt;print Object.entries($inventory)&gt;&gt; | &lt;span class=&quot;info&quot;&gt;entries&lt;/span&gt; &lt;br&gt;
 &lt;&lt;print Object.getOwnPropertyNames($inventory)&gt;&gt; | &lt;span class=&quot;info&quot;&gt;getOwnPropertyNames&lt;/span&gt; &lt;br&gt;
-&lt;&lt;print Object.propertyIsEnumerable($inventory)&gt;&gt; | &lt;span class=&quot;info&quot;&gt;propertyIsEnumerable&lt;/span&gt; &lt;br&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryInit" tags="" position="350,100" size="100,100">/* Used for pre-story-start initialization tasks, like variable initialization (happens at the beginning of story initialization). */
-&lt;&lt;silently&gt;&gt;
-
+&lt;&lt;print Object.propertyIsEnumerable($inventory)&gt;&gt; | &lt;span class=&quot;info&quot;&gt;propertyIsEnumerable&lt;/span&gt; &lt;br&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryInit" tags="" position="350,100" size="100,100">&lt;&lt;silently&gt;&gt;
+/* Path to inventory image directory */
 &lt;&lt;set $imgPathInv = &#39;media/inv/&#39;&gt;&gt;
 
+/* Player inventory - &#39;on body&#39; */
 &lt;&lt;newinventory &#39;$pc&#39; &#39;condom&#39; &#39;watch&#39;&gt;&gt;
+/* Player storage - like a chest, dresser or home */
 &lt;&lt;newinventory &#39;$pcStorage&#39;&gt;&gt;
+/* A shop regular inventory (base goods?) */
 &lt;&lt;newinventory &#39;$shopOne&#39; &#39;toothpaste&#39; &#39;beer&#39; &#39;groceries&#39;&gt;&gt;
+/* A shops speciall or rare inventory */
 &lt;&lt;newinventory &#39;$shopSpecial&#39; &#39;Superpill&#39; &#39;Magic-wand&#39; &#39;JackUP&#39;&gt;&gt;
+/* Another shop */
 &lt;&lt;newinventory &#39;$shopTwo&#39;&gt;&gt;
 
-&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="simple" tags="nobr" position="475,100" size="100,100">&lt;&lt;pickup &#39;$pc&#39; &#39;buisnesscard&#39;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="simple" tags="nobr" position="475,100" size="100,100">/* Adding things to player &#39;on body&#39; inventory */
+&lt;&lt;pickup &#39;$pc&#39; &#39;buisnesscard&#39;&gt;&gt;
+
+/* Shop contining css grid div */
 &lt;div class=&quot;shop&quot;&gt;
   &lt;div class=&quot;shop-inventory&quot;&gt;
-    
+
+ /* Delay 25ms? */
 &lt;&lt;timed .25s&gt;&gt;
   
+    /* looping trough inventory (range) */
     &lt;&lt;for _i range $shopOne.toArray()&gt;&gt;
     &lt;div class=&quot;shop-item&quot;&gt;
       &lt;&lt;set _e=&#39;item &#39; +&#39;id-&#39;+_i.replace(/ /g,&#39;-&#39;).substr(0,9).toLowerCase()&gt;&gt;
@@ -1034,14 +1042,14 @@ after
       &lt;img class=&quot;item-img&quot; @src=&quot;$imgPathInv+_imgSrc&quot; @alt=&quot;_i&quot; height=&quot;150px&quot; width=&quot;150px&quot; /&gt;
       &lt;h4 class=&quot;item-name&quot;&gt;_i&lt;/h4&gt;
       &lt;div class=&quot;columns&quot;&gt;
-        &lt;p class=&quot;price&quot;&gt;$752&lt;/p&gt;
-        &lt;p&gt;&lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Buy&lt;/a&gt;&lt;/p&gt;
+        &lt;p class=&quot;price&quot;&gt;$752&lt;/p&gt; /* TODO: hack price into inventory system */
+        &lt;p&gt;&lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Buy&lt;/a&gt;&lt;/p&gt; /* TODO: Transfer or Add to player inventory + remove money from player */
       &lt;/div&gt;
     &lt;/div&gt;
 
     &lt;&lt;/for&gt;&gt;
 
-    /* Speciall */
+    /* Special or rare inventory for the shop */
     &lt;&lt;for _i range $shopSpecial.toArray().pluckMany(1)&gt;&gt;
     &lt;div class=&quot;shop-item shop-special&quot;&gt;
       
@@ -1057,9 +1065,6 @@ after
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;&lt;/for&gt;&gt;
-    /* &lt;&lt;set _randomItems to $playerInv.toArray().pluckMany(2)&gt;&gt; */
-
-
   
 &lt;&lt;/timed&gt;&gt;
 
