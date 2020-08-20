@@ -20,10 +20,8 @@ Dynamic shop playground
 <<newinventory '$pc' 'condom' 'watch'>>
 <<newinventory '$pcStorage'>>
 <<newinventory '$shopOne' 'toothpaste' 'beer' 'groceries'>>
+<<newinventory '$shopSpecial' 'Superpill' 'Magic-wand' 'JackUP'>>
 <<newinventory '$shopTwo'>>
-
->>
-
 
 <</silently>>
 
@@ -35,28 +33,41 @@ Dynamic shop playground
     
 <<timed .25s>>
   
-  <<for _i range $shopOne.toArray()>>
-    <<set _e = 'item '+'id-'+_i.replace(/ /g,'-').substr(0,9).toLowerCase() >>
-    <<set _imgSrc = 'inv-'+_i.replace(/ /g,'-').toLowerCase()+'.png'>>
-
-
+    <<for _i range $shopOne.toArray()>>
     <div class="shop-item">
-      <img 
-        class="item-img"
-        @src="$imgPathInv+_imgSrc"
-        @alt="_i"
-        height="150px"
-        width="150px" 
-      />
+      <<set _e='item ' +'id-'+_i.replace(/ /g,'-').substr(0,9).toLowerCase()>>
+      <<set _imgSrc='inv-' +_i.replace(/ /g,'-').toLowerCase()+'.png'>>
+      
+      <img class="item-img" @src="$imgPathInv+_imgSrc" @alt="_i" height="150px" width="150px" />
       <h4 class="item-name">_i</h4>
       <div class="columns">
         <p class="price">$752</p>
         <p><a class="btn" href="#">Buy</a></p>
       </div>
     </div>
-    
-  <</for>>
 
+    <</for>>
+
+    /* Speciall */
+    <<for _i range $shopSpecial.toArray().pluckMany(1)>>
+    <div class="shop-item shop-special">
+      
+    
+      <<set _e='item ' +'id-'+_i.replace(/ /g,'-').substr(0,9).toLowerCase()>>
+      <<set _imgSrc='inv-' +_i.replace(/ /g,'-').toLowerCase()+'.png'>>
+
+      <img class="item-img" @src="$imgPathInv+_imgSrc" @alt="_i" height="150px" width="150px" />
+      <h4 class="item-name">_i</h4>
+      <div class="columns">
+        <p class="price">$752</p>
+        <p><a class="btn" href="#">Buy</a></p>
+      </div>
+    </div>
+    <</for>>
+    /* <<set _randomItems to $playerInv.toArray().pluckMany(2)>> */
+
+
+  
 <</timed>>
 
 

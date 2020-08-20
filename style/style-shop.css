@@ -101,6 +101,10 @@ body {
   padding: 1em;
 }
 
+.shop-special {
+  box-shadow: 0 0 0.4em pink;
+}
+
 .item-img {
   margin: .5em 0;
   background-image: url("../../media/interface/heart2.png");
