@@ -1,31 +1,43 @@
+# Special Passages
+
 ## ::PassageDone
+
 Used for post-passage-display tasks, like redoing dynamic changes (happens after the rendering and display of each passage). Roughly equivalent to the :passagedisplay event.
 
 ## ::PassageFooter
+
 Appended to each rendered passage. Roughly equivalent to the :passagerender event.
 
 ## ::PassageHeader
+
 Prepended to each rendered passage. Roughly equivalent to the :passagestart event.
 
 ## ::PassageReady
+
 Used for pre-passage-display tasks, like redoing dynamic changes (happens before the rendering of each passage). Roughly equivalent to the :passagestart event.
 
 ## ::StoryAuthor
+
 Used to populate the authorial byline area in the UI bar (element ID: story-author).
 
 ## ::StoryBanner
+
 Used to populate the story's banner area in the UI bar (element ID: story-banner).
 
 ## ::StoryCaption
+
 Used to populate the story's caption area in the UI bar (element ID: story-caption). May also be, and often is, used to add additional story UI elements and content to the UI bar.
 
 ## ::StoryDisplayTitle
+
 Sets the story's display title in the browser's titlebar and the UI bar (element ID: story-title). If omitted, the story title will be used instead.
 
 ## ::StoryInit
+
 Used for pre-story-start initialization tasks, like variable initialization (happens at the beginning of story initialization).
 
 ## ::StoryInterface
+
 Used to replace SugarCube's default UI. Its contents are treated as raw HTML markup—i.e., none of SugarCube's special HTML processing is performed. It must contain, at least, an element with the ID passages, which will be the main passage display area. Elements, aside from the #passages element, may include a data-passage content attribute, which denotes that the element should be updated via the specified passage—the passage will be processed as normal, meaning that markup and macros will work as expected.
 
 **Warning**: Elements that include a data-passage content attribute should not themselves contain additional elements—since such elements' contents are replaced each turn via their associated passage, any child elements would be lost.
@@ -37,17 +49,18 @@ Used to replace SugarCube's default UI. Its contents are treated as raw HTML mar
 With data-passage content attributes
 
     <div id="interface">
-    	<div id="menu" data-passage="Menu"></div>
-    	<div id="notifications" data-passage="Notifications"></div>
-    	<div id="passages"></div>
+        <div id="menu" data-passage="Menu"></div>
+        <div id="notifications" data-passage="Notifications"></div>
+        <div id="passages"></div>
     </div>
 
 ## ::StoryMenu
+
 Used to populate the story's menu items in the UI bar (element ID: menu-story).
 
 Note: The story menu only displays links—specifically, anything that creates an anchor element (`<a>`). While it renders content just as any other passage does, instead of displaying the rendered output as-is, it sifts through the output and builds its menu from the generated links contained therein.
 
-### Examples:
+### Examples
 
     [[Inventory]]
     <<link "Schedule">>…<</link>>
@@ -57,6 +70,7 @@ Note: The story menu only displays links—specifically, anything that creates a
 Sets the story's subtitle in the UI bar (element ID: story-subtitle).
 
 ## ::StoryTitle
+
 Warning: The story title is _used_ to create the storage ID that is used to store all player data, both temporary and persistent. It should be plain text, containing no code, markup, or macros of any kind.
 
 *Tip*: If you want to set a title for display that contains code, markup, or macros, see the StoryDisplayTitle special passage.
@@ -93,12 +107,8 @@ The properties used only with Twine 2-style story formats include:
 
         :: StoryData
         {
-        	"ifid": "D674C58C-DEFA-4F70-B7A2-27742230C0FC",
-        	"format": "SugarCube",
-        	"format-version": "2.30.0",
-        	"start": "My Starting Passage"
+            "ifid": "D674C58C-DEFA-4F70-B7A2-27742230C0FC",
+            "format": "SugarCube",
+            "format-version": "2.30.0",
+            "start": "My Starting Passage"
         }
-
-## ::StoryTitle
-
-The contents of the StoryTitle passage will be used as the name/title of the story.
