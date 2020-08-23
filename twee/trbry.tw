@@ -1,0 +1,47 @@
+:: hackAndTape
+
+/* If I want to make a list item (<li>) of each action in that array(?) how that look? */
+
+/* {G𝖜𝖊𝖓[♡].T𝖆𝖘𝖙𝖎𝖈}Today at 13:44 */
+/* you can get an array of all available actions by this  */
+<<set $generalMart to [ 
+  {shopitem: "groceries", cost: 30}, 
+  {shopitem: "razors", cost : 2},
+  {shopitem: "skin care", cost : 5},
+  {shopitem: "lip balm", cost : 1},
+  {shopitem: "snacks", cost : 10}
+]>>
+
+<h1 class="hello">
+  {G𝖜𝖊𝖓[♡].T𝖆𝖘𝖙𝖎𝖈}
+</h1>
+
+<div class="shop">
+  <div class="shop-inventory">
+    <<timed .3s>>
+      <<for _item range $generalMart>>
+      <<capture _item.cost>>
+        <div class="shop-item">
+          <img class="item-img" @src="$imgPathInv+_item.shopitem" @alt="_item.shopitem" height="150px" width="150px" />
+          <h4 class="item-name">_item.shopitem</h4>
+  
+          <div class="columns">
+            <p class="price">_item.cost</p>
+            <p class="btn">
+            <<link Buy>> <<set $pc.money -= _item.cost>> <</link>>
+            /* TODO: set class */
+            
+            </p>
+          </div>
+        </div>
+        <</capture>>
+      <</for>>
+    <</timed>>
+  </div>
+</div>
+
+/* Filter items,  */
+<<set $allShopItems to $generalMart.filter(({shopitem}) => shopitem)>>
+
+
+[[simple]]

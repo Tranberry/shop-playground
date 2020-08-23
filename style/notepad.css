@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Gaegu&family=Kalam&display=swap');
+
+/* 
+  font-family: 'Amatic SC', cursive;
+  font-family: 'Gaegu', cursive;
+  font-family: 'Kalam', cursive;
+*/
+
+.notepad {
+  background-image: url(media/ui/texture-notepad.jpg);
+  border-radius: 0.3em;
+  color: hsl(240deg 55% 23%);
+  box-shadow: 0.3em 0.3em 0.4em 0em hsl(0deg 0% 0% / 20%);
+  padding: 0 4.2em;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 900;
+  font-size: 2rem;
+}
+.notepad ul {
+  list-style: none;
+  padding:0;
+  margin: 0;
+  font-family: 'Kalam', cursive;
+  font-weight: 600;
+}
+.notepad li {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: -20px;
+  height: 1.58em;
+}
+.notepad li:last-child {
+  padding: 0 0 3em 0;
+}
+
+.notepad h1 {
+    position: relative;
+    top: 0.14em;
+    left: 1.2em;
+}
