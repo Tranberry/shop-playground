@@ -19,7 +19,8 @@ Dynamic shop playground
         money:150,
         hp:100,
         sp:100,
-        aro:10
+        aro:10,
+        inv:[]
 }>>
 
 

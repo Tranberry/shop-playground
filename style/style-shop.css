@@ -130,6 +130,16 @@ body {
   border-radius: 3px;
   text-decoration: none;
   text-transform: uppercase;
+  user-select: none; 
+}
+
+.btn a {
+  color: inherit;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding: 2em;
+  margin: -2em;
 }
 
 .btn:hover {
