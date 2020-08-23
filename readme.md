@@ -1,8 +1,12 @@
 # Twine/Sugarcube Shop with <q>dynamic</q> inventory
 
+A simple shop inventory system for Twine/Sugarcube, including basic css grid styling. 
 
+The goal was to make a shop user experience that was not just a list with a [buy] link and instead generate a shop with images and a buy button.
 
-## Folder and File Structure for Tweego Projects (SugarCube/Twine)
+---
+
+### Folder and File Structure for Tweego Projects (SugarCube/Twine)
 
 https://github.com/tmedwards/tweego/releases
  

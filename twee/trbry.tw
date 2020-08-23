@@ -1,9 +1,6 @@
 :: hackAndTape
 
-/* If I want to make a list item (<li>) of each action in that array(?) how that look? */
-
-/* {G𝖜𝖊𝖓[♡].T𝖆𝖘𝖙𝖎𝖈}Today at 13:44 */
-/* you can get an array of all available actions by this  */
+/* Setting up a variable to store a shops inventory with price $generalMart represents the shops general goods, {shopitem: "snacks", cost : 10} shopitem = type of, cost = price. */
 <<set $generalMart to [ 
   {shopitem: "groceries", cost: 300}, 
   {shopitem: "razors", cost : 2},
@@ -12,15 +9,15 @@
   {shopitem: "snacks", cost : 10}
 ]>>
 
-<h1 class="hello">
-  {G𝖜𝖊𝖓[♡].T𝖆𝖘𝖙𝖎𝖈}
-</h1>
 
-
+/* Some div containers to manage the CSS grid */
 <div class="shop">
   <div class="shop-inventory">
+  /* NOTE: the timed tag can probably be removed  */
     <<timed .3s>>
+    /* 'looping' trough each item */
       <<for _item range $generalMart>>
+      /* storing _item for use in macros */
       <<capture _item>>
         <div class="shop-item">
           <img class="item-img" @src="$imgPathInv+_item.shopitem.replace(/\s+/g, '-').toLowerCase()+'.png'" @alt="_item.shopitem" height="150px" width="150px" />
@@ -29,7 +26,9 @@
           <div class="columns">
             <p class="price">_item.cost</p>
             <p class="btn" @id="_item.shopitem">
-            <<link Buy>>  
+            /* TODO: look up hove to update button style when money is lost due to shopping spree */
+            <<link Buy>>
+              /* if pc have enough money */
             <<if $pc.money gte _item.cost>>
             <<set $pc.money -= _item.cost, $pc.inv.push(_item.shopitem)>>
             <</if>>
