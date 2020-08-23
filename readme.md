@@ -1,4 +1,8 @@
-# Folder and File Structure for Tweego Projects (SugarCube/Twine)
+# Twine/Sugarcube Shop with <q>dynamic</q> inventory
+
+
+
+## Folder and File Structure for Tweego Projects (SugarCube/Twine)
 
 https://github.com/tmedwards/tweego/releases
  
