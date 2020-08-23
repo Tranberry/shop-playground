@@ -1,4 +1,5 @@
 # Add shop inventory images here
+
 As is, it looks for _PNG_ image that is named after the ones you defined, except it replaces SPACE with a dash:  
 
     <<set $generalMart to [ 
