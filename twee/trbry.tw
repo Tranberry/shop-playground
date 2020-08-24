@@ -1,5 +1,7 @@
 :: hackAndTape
 
+/* TODO: check if a shopping basket is remotely useful */
+
 /* Setting up a variable to store a shops inventory with price $generalMart represents the shops general goods, {shopitem: "snacks", cost : 10} shopitem = type of, cost = price. */
 <<set $generalMart to [ 
   {shopitem: "groceries", cost: 300}, 
